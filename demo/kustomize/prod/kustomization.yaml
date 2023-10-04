@@ -11,14 +11,18 @@ images:
   newName: docker.io/shapai/helloenv # {"$imagepolicy": "flux-system:helloenv-prod:name"}
   newTag: 1.0.16 # {"$imagepolicy": "flux-system:helloenv-prod:tag"}
 patches:
-- patch: |-
-    - op: add
-      path: "/spec/template/spec/containers/0/env/-"
-      value:
-        - name: ENV
-          value: "prod"
-  target:
-    kind: Deployment
-    namespace: helloenv-prod
-    name: helloenv
+  - patch: |
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: helloenv
+      spec:
+        template:
+          spec:
+            containers:
+              - name: helloenv
+                env:
+                  - name: ENV
+                    value: "prod"
+                    $patch: add
 

@@ -11,13 +11,17 @@ images:
   newName: docker.io/shapai/helloenv # {"$imagepolicy": "flux-system:helloenv-staging:name"}
   newTag: Build-149 # {"$imagepolicy": "flux-system:helloenv-staging:tag"}
 patches:
-- patch: |-
-    - op: add
-      path: "/spec/template/spec/containers/0/env/-"
-      value:
-        - name: ENV
-          value: "stage"
-  target:
-    kind: Deployment
-    namespace: helloenv-staging
-    name: helloenv
+  - patch: |
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: helloenv
+      spec:
+        template:
+          spec:
+            containers:
+              - name: helloenv
+                env:
+                  - name: ENV
+                    value: "stage"
+                    $patch: add
