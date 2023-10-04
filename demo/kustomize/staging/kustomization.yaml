@@ -8,5 +8,5 @@ resources:
 - ingress.yaml
 images:
 - name: docker.io/shapai/helloenv
-  newName: docker.io/shapai/helloenv # {"$imagepolicy": "flux-system:pypodinfo-staging:name"}
-  newTag: Build-140 # {"$imagepolicy": "flux-system:pypodinfo-staging:tag"}
+  newName: docker.io/shapai/helloenv # {"$imagepolicy": "flux-system:helloenv-staging:name"}
+  newTag: Build-140 # {"$imagepolicy": "flux-system:helloenv-staging:tag"}

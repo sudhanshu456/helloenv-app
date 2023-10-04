@@ -4,8 +4,9 @@ namespace: hello-env-prod
 resources:
 - namespace.yaml
 - ../app
+- service.yaml
 - ingress.yaml
 images:
 - name: docker.io/shapai/helloenv
-  newName: docker.io/shapai/helloenv # {"$imagepolicy": "flux-system:pypodinfo-prod:name"}
-  newTag: 1.0.16 # {"$imagepolicy": "flux-system:pypodinfo-prod:tag"}
+  newName: docker.io/shapai/helloenv # {"$imagepolicy": "flux-system:helloenv-prod:name"}
+  newTag: 1.0.16 # {"$imagepolicy": "flux-system:helloenv-prod:tag"}
