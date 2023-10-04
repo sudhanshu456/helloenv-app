@@ -24,5 +24,4 @@ patches:
                 env:
                   - name: ENV
                     value: "prod"
-                    $patch: add
 

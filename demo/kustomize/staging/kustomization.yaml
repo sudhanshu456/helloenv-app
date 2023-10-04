@@ -24,4 +24,3 @@ patches:
                 env:
                   - name: ENV
                     value: "stage"
-                    $patch: add
