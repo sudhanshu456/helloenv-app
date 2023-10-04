@@ -1,6 +1,6 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-namespace: hello-env-prod
+namespace: helloenv-prod
 resources:
 - namespace.yaml
 - ../app
@@ -10,3 +10,15 @@ images:
 - name: docker.io/shapai/helloenv
   newName: docker.io/shapai/helloenv # {"$imagepolicy": "flux-system:helloenv-prod:name"}
   newTag: 1.0.16 # {"$imagepolicy": "flux-system:helloenv-prod:tag"}
+patches:
+- patch: |-
+    - op: add
+      path: "/spec/template/spec/containers/0/env/-"
+      value:
+        - name: ENV
+          value: "prod"
+  target:
+    kind: Deployment
+    namespace: helloenv-prod
+    name: helloenv
+
