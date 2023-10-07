@@ -19,7 +19,8 @@ jobs:
            if [[ ${{ github.event.ref }} =~ ^refs/tags/[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
                echo "::set-output name=IMAGE_ID::${{ github.ref_name }}"
            else
-             echo "::set-output name=IMAGE_ID::Build-${{ github.run_number }}"
+             ts=$(date +%s)
+             echo "::set-output name=IMAGE_ID::Build-${GITHUB_SHA::8}-${ts}"
            fi
 
       - name: Set up QEMU
