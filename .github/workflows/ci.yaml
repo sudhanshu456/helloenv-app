@@ -20,7 +20,8 @@ jobs:
                echo "::set-output name=IMAGE_ID::${{ github.ref_name }}"
            else
              ts=$(date +%s)
-             echo "::set-output name=IMAGE_ID::Build-${GITHUB_SHA::8}-${ts}"
+             branch=${GITHUB_REF##*/}
+             echo "::set-output name=IMAGE_ID::${branch}-${GITHUB_SHA::8}-${ts}"
            fi
 
       - name: Set up QEMU
