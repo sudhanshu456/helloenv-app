@@ -44,4 +44,4 @@ jobs:
           build-args: VERSION=${{  steps.check-tag.outputs.IMAGE_ID }}
           file: ./app/Dockerfile
           tags: |
-            shapai/helloenv:${{  steps.check-tag.outputs.IMAGE_ID }}
+            sudhanshu456/helloenv:${{  steps.check-tag.outputs.IMAGE_ID }}
