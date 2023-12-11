@@ -13,11 +13,7 @@ def health():
 def hello():
     ENV = os.environ.get("ENV")  # Read the environment variable
     VERSION = os.environ.get("VERSION")  #Read the version variable
-    
-    # hello here
-    """
-    Some text here
-    """
+
     if ENV == "prod":
         return f"This is a production environment (Version: {VERSION})"
     elif ENV == "stage":
